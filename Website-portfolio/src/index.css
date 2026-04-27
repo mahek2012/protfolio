@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+}
+
+@theme {
+  --color-accent-primary: #6366f1;
+  --color-accent-secondary: #a855f7;
+}
+
+/* Custom styles that aren't easily done with Tailwind classes */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  @apply bg-white text-slate-900 transition-colors duration-300;
+}
+
+[data-theme='dark'] body {
+  @apply bg-slate-950 text-slate-100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent;
+}
+
+.glass {
+  @apply bg-white/80 backdrop-blur-xl border border-slate-200;
+}
+
+[data-theme='dark'] .glass {
+  @apply bg-slate-900/80 border-slate-800;
+}
