@@ -12,17 +12,26 @@ const ProjectCard = ({ project, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay }}
-      className="glass rounded-[2rem] overflow-hidden group hover:border-indigo-500 transition-all flex flex-col h-full shadow-lg hover:shadow-2xl hover:shadow-indigo-500/10"
+      className="glass rounded-[2rem] overflow-hidden group hover:border-indigo-500 transition-all flex flex-col h-full shadow-lg hover:shadow-2xl hover:shadow-indigo-500/20"
     >
+      <div className="w-full h-56 overflow-hidden relative border-b border-slate-200 dark:border-slate-800 shadow-inner">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      </div>
+
       <div className="p-8 flex flex-col flex-grow">
         <h3 className="text-2xl font-bold mb-6 group-hover:text-indigo-500 transition-colors">{project.title}</h3>
-        
+
         <div className="space-y-5 mb-8 flex-grow">
           <div>
             <span className="text-sm font-bold uppercase tracking-widest text-indigo-500">Problem:</span>
             <p className="text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">{project.problem}</p>
           </div>
-          
+
           <div>
             <span className="text-sm font-bold uppercase tracking-widest text-purple-500">Solution:</span>
             <p className="text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">{project.solution}</p>
@@ -46,10 +55,10 @@ const ProjectCard = ({ project, delay }) => {
         </div>
 
         <div className="flex items-center gap-4 mt-auto pt-6 border-t border-slate-200 dark:border-slate-800">
-          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md">
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg hover:shadow-indigo-500/30">
             Live Demo <ExternalLink size={18} />
           </a>
-          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold rounded-xl transition-all shadow-sm">
+          <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold rounded-xl transition-all shadow-sm hover:shadow-md">
             GitHub <GithubIcon size={18} />
           </a>
         </div>
@@ -61,31 +70,34 @@ const ProjectCard = ({ project, delay }) => {
 const Projects = () => {
   const projects = [
     {
-      title: 'Jewellery Design Generator',
-      problem: 'Users ko custom jewellery design karna difficult tha and visualize karne me problem hoti thi.',
-      solution: 'AI-based tool jo text se jewellery design generate karta hai aur human models par overlay karta hai.',
-      tech: ['React', 'Tailwind CSS', 'Node.js', 'AI API'],
-      caseStudy: 'Learned API integration for AI models. Faced UI alignment issue -> solved using flexbox and grid layouts.',
+      title: 'LuxeHaven E-Commerce',
+      image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=800',
+      problem: 'Luxury products needed a highly performant and elegant online storefront.',
+      solution: 'Developed a fast, responsive e-commerce platform using modern Angular with a sleek product catalog and seamless checkout.',
+      tech: ['Angular 18', 'TypeScript', 'HTML/CSS'],
+      caseStudy: 'Leveraged the latest Angular CLI and component-based architecture to ensure high scalability and performance.',
       demoUrl: '#',
-      repoUrl: '#',
+      repoUrl: 'https://github.com/mahek2012/systems/tree/main/LuxeHaven-ecommerce',
     },
     {
-      title: 'Freelance Marketplace',
-      problem: 'Freelancers ko high-end clients ke liye ek secure aur trusted platform nahi mil raha tha.',
-      solution: 'Ek premium marketplace system banaya jisme escrow payments aur real-time chat integrated hai.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      caseStudy: 'Learned handling real-time data with WebSockets. Faced state management complexity -> solved using Redux Toolkit.',
+      title: 'Freelance Digital Hub',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800',
+      problem: 'Freelancers lacked a centralized, localized platform to connect with clients and display their digital portfolios.',
+      solution: 'Created a dedicated digital hub for freelancers to showcase skills, manage projects, and communicate with clients effectively.',
+      tech: ['React', 'JavaScript', 'CSS', 'Node.js'],
+      caseStudy: 'Focused on creating an intuitive UI/UX to maximize user engagement and facilitate seamless client-freelancer connections.',
       demoUrl: '#',
-      repoUrl: '#',
+      repoUrl: 'https://github.com/mahek2012/systems/tree/main/Freelance_digital_Hub',
     },
     {
-      title: 'Portfolio Website',
-      problem: 'As a developer, apni online presence and professional identity showcase karne ke liye koi strong medium nahi tha.',
-      solution: 'Ek highly responsive aur modern personal portfolio banaya jisme dark mode aur animations hain.',
-      tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-      caseStudy: 'Learned advanced Framer Motion animations. Faced dark mode toggle bugs -> solved using Context API and localStorage.',
+      title: 'Airway Reservation System',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800',
+      problem: 'Booking and managing flights was a tedious process, lacking a unified system for users and administrators.',
+      solution: 'Built a full-stack airline reservation system with flight search, real-time seat booking, and an admin dashboard.',
+      tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+      caseStudy: 'Implemented JWT-based authentication for role-based access and managed complex states for live seat selection.',
       demoUrl: '#',
-      repoUrl: '#',
+      repoUrl: 'https://github.com/mahek2012/systems/tree/main/NG_PROJ',
     },
   ];
 
@@ -104,6 +116,25 @@ const Projects = () => {
             <ProjectCard key={project.title} project={project} delay={i * 0.1} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="https://github.com/mahek2012"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+          >
+            <GithubIcon size={24} />
+            <span>View More on GitHub</span>
+            <ArrowRight size={20} />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

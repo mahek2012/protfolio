@@ -3,20 +3,13 @@ import { motion } from 'framer-motion';
 import { Code, Server, Database, Layout } from 'lucide-react';
 
 const SkillItem = ({ name, level }) => (
-  <div className="mb-6">
-    <div className="flex justify-between mb-2">
-      <span className="font-semibold">{name}</span>
-      <span className="text-sm opacity-60">{level}%</span>
-    </div>
-    <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-      <motion.div 
-        initial={{ width: 0 }}
-        whileInView={{ width: `${level}%` }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="h-full bg-gradient-to-r from-indigo-500 to-purple-500"
-      />
-    </div>
+  <div className="flex items-center justify-between p-4 mb-3 glass bg-slate-50/50 dark:bg-slate-800/50 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all group">
+    <span className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{name}</span>
+    {level && (
+      <span className="text-xs font-bold px-3 py-1 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-full">
+        {level}
+      </span>
+    )}
   </div>
 );
 
@@ -26,13 +19,13 @@ const SkillCategory = ({ title, icon, skills, delay }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay }}
-    className="p-8 glass rounded-3xl hover:border-indigo-500 transition-all group"
+    className="p-8 glass rounded-3xl hover:border-indigo-500 transition-all group shadow-sm hover:shadow-xl hover:shadow-indigo-500/10"
   >
     <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-6 text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all">
       {icon}
     </div>
     <h3 className="text-xl font-bold mb-6">{title}</h3>
-    <div className="space-y-2">
+    <div className="space-y-1">
       {skills.map((skill) => (
         <SkillItem key={skill.name} {...skill} />
       ))}
@@ -46,33 +39,33 @@ const Skills = () => {
       title: 'Frontend',
       icon: <Layout size={28} />,
       skills: [
-        { name: 'HTML', level: 95 },
-        { name: 'CSS', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'React', level: 80 }
+        { name: 'React', level: 'Intermediate' },
+        { name: 'JavaScript', level: 'Intermediate' },
+        { name: 'HTML/CSS', level: 'Advanced' }
       ],
     },
     {
       title: 'Backend',
       icon: <Server size={28} />,
       skills: [
-        { name: 'Node.js', level: 70 },
-        { name: 'Express', level: 75 }
+        { name: 'Node.js', level: 'Beginner' },
+        { name: 'Express.js', level: 'Beginner' }
       ],
     },
     {
       title: 'Database',
       icon: <Database size={28} />,
       skills: [
-        { name: 'MongoDB', level: 65 }
+        { name: 'MongoDB', level: 'Beginner' }
       ],
     },
     {
       title: 'Tools',
       icon: <Code size={28} />,
       skills: [
-        { name: 'Git', level: 85 },
-        { name: 'VS Code', level: 90 }
+        { name: 'Git' },
+        { name: 'GitHub' },
+        { name: 'VS Code' }
       ],
     },
   ];
