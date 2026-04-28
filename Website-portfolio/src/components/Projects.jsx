@@ -55,9 +55,15 @@ const ProjectCard = ({ project, delay }) => {
         </div>
 
         <div className="flex items-center gap-4 mt-auto pt-6 border-t border-slate-200 dark:border-slate-800">
-          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg hover:shadow-indigo-500/30">
-            Live Demo <ExternalLink size={18} />
-          </a>
+          {project.demoUrl === '#' ? (
+            <button disabled className="flex-1 flex justify-center items-center gap-2 py-3 bg-slate-300 dark:bg-slate-700 text-slate-500 dark:text-slate-500 font-bold rounded-xl transition-all shadow-sm cursor-not-allowed">
+              Deploying Soon
+            </button>
+          ) : (
+            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg hover:shadow-indigo-500/30">
+              Live Demo <ExternalLink size={18} />
+            </a>
+          )}
           <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold rounded-xl transition-all shadow-sm hover:shadow-md">
             GitHub <GithubIcon size={18} />
           </a>
